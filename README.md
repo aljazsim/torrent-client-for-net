@@ -11,25 +11,25 @@ This is an implementation of a torrent peer using the BitTorrent Protocol 1.0 wr
 ```csharp
 public void Run()
 {
-	TorrentClient torrentClient;
-	 
-	if (TorrentInfo.TryLoad(@".\TorrentFile.torrent", out TorrentInfo torrent))
-	{
-		client = new TorrentClient.TorrentClient(4000, @".\Test");
-		client.DownloadSpeedLimit = 100 * 1024;
-		client.TorrentHashing += TorrentClient_TorrentHashing;
-		client.TorrentLeeching += TorrentClient_TorrentLeeching;
-		client.TorrentSeeding += TorrentClient_TorrentSeeding;
-		client.TorrentStarted += TorrentClient_TorrentStarted;
-		client.TorrentStopped += TorrentClient_TorrentStopped;
-		client.Start();
-		client.Start(torrent);
-	}
+    TorrentClient torrentClient;
+     
+    if (TorrentInfo.TryLoad(@".\TorrentFile.torrent", out TorrentInfo torrent))
+    {
+        client = new TorrentClient.TorrentClient(4000, @".\Test");
+        client.DownloadSpeedLimit = 100 * 1024;
+        client.TorrentHashing += TorrentClient_TorrentHashing;
+        client.TorrentLeeching += TorrentClient_TorrentLeeching;
+        client.TorrentSeeding += TorrentClient_TorrentSeeding;
+        client.TorrentStarted += TorrentClient_TorrentStarted;
+        client.TorrentStopped += TorrentClient_TorrentStopped;
+        client.Start();
+        client.Start(torrent);
+    }
 }
 
 private void TorrentClient_TorrentHashing(object sender, TorrentHashingEventArgs e)
 {
-	Console.WriteLine("hashing");
+    Console.WriteLine("hashing");
 }
 
 private void TorrentClient_TorrentLeeching(object sender, TorrentLeechingEventArgs e)
@@ -38,17 +38,17 @@ private void TorrentClient_TorrentLeeching(object sender, TorrentLeechingEventAr
 
 private void TorrentClient_TorrentSeeding(object sender, TorrentSeedingEventArgs e)
 {
-	Console.WriteLine("seeding");
+    Console.WriteLine("seeding");
 }
 
 private void TorrentClient_TorrentStarted(object sender, TorrentStartedEventArgs e)
 {
-	Console.WriteLine("started");
+    Console.WriteLine("started");
 }
 
  private void TorrentClient_TorrentStopped(object sender, TorrentStoppedEventArgs e)
 {
-	Console.WriteLine("stopped");
+    Console.WriteLine("stopped");
 }
 ```
 ## Getting execution details
