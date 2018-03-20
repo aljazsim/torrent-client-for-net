@@ -1,0 +1,9 @@
+*.suo
+.vs
+*.user
+obj
+bin
+Binaries/*
+Packages/*
+Test/TorrentClientTest.Data/*
+TestResults/*
