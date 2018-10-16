@@ -11,11 +11,14 @@ This is an implementation of a torrent peer using the BitTorrent Protocol 1.0 wr
 ```csharp
 public void Run()
 {
+    int listeningPort = 4000; // must be available and between 1025 and 65535
+    string baseDirectory = @".\Test"; // base torrent data directory
+    string torrentInfoFilePath = @".\TorrentFile.torrent";
     TorrentClient torrentClient;
 
-    if (TorrentInfo.TryLoad(@".\TorrentFile.torrent", out TorrentInfo torrent))
+    if (TorrentInfo.TryLoad(torrentInfoFilePath, out TorrentInfo torrent))
     {
-        torrentClient = new TorrentClient(4000, @".\Test"); // listening port, base torrent data directory
+        torrentClient = new TorrentClient(listeningPort, baseDirectory);
         torrentClient.DownloadSpeedLimit = 100 * 1024; // 100 KB/s
         torrentClient.UploadSpeedLimit = 200 * 1024; // 200 KB/s
         torrentClient.TorrentHashing += this.TorrentClient_TorrentHashing;
