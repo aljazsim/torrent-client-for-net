@@ -16,7 +16,7 @@ namespace TorrentClientApp
         /// <summary>
         /// The client.
         /// </summary>
-        private static TorrentClient.TorrentClient client;
+        private static TorrentClient.TorrentClient torrentClient;
 
         /// <summary>
         /// The torrent.
@@ -37,15 +37,16 @@ namespace TorrentClientApp
 
             TorrentInfo.TryLoad(@".\..\..\Test\TorrentClientTest.Data\TorrentFile.torrent", out torrent);
 
-            client = new TorrentClient.TorrentClient(4000, @"Test\");
-            client.DownloadSpeedLimit = 100 * 1024;
-            client.TorrentHashing += TorrentClient_TorrentHashing;
-            client.TorrentLeeching += TorrentClient_TorrentLeeching;
-            client.TorrentSeeding += TorrentClient_TorrentSeeding;
-            client.TorrentStarted += TorrentClient_TorrentStarted;
-            client.TorrentStopped += TorrentClient_TorrentStopped;
-            client.Start();
-            client.Start(torrent);
+            torrentClient = new TorrentClient.TorrentClient(4000, @".\Test"); // listening port, base torrent data directory
+            torrentClient.DownloadSpeedLimit = 100 * 1024; // 100 KB/s
+            torrentClient.UploadSpeedLimit = 200 * 1024; // 200 KB/s
+            torrentClient.TorrentHashing += TorrentClient_TorrentHashing;
+            torrentClient.TorrentLeeching += TorrentClient_TorrentLeeching;
+            torrentClient.TorrentSeeding += TorrentClient_TorrentSeeding;
+            torrentClient.TorrentStarted += TorrentClient_TorrentStarted;
+            torrentClient.TorrentStopped += TorrentClient_TorrentStopped;
+            torrentClient.Start(); // start torrent client
+            torrentClient.Start(torrent); // start torrent file
 
             // setup checkout timer
             var timer = new System.Timers.Timer();
@@ -79,7 +80,7 @@ namespace TorrentClientApp
         /// <param name="e">The <see cref="System.Timers.ElapsedEventArgs"/> instance containing the event data.</param>
         private static void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            TorrentProgressInfo info = client.GetProgressInfo(torrent.InfoHash);
+            TorrentProgressInfo info = torrentClient.GetProgressInfo(torrent.InfoHash);
 
             Console.WriteLine(string.Empty);
             Console.WriteLine($"\tduration: {info.Duration.ToString(@"hh\:mm\:ss", CultureInfo.InvariantCulture)}\tcompleted: {(int)Math.Round(info.CompletedPercentage * 100)}%");
