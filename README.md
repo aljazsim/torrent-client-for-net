@@ -12,18 +12,19 @@ This is an implementation of a torrent peer using the BitTorrent Protocol 1.0 wr
 public void Run()
 {
     TorrentClient torrentClient;
-     
+
     if (TorrentInfo.TryLoad(@".\TorrentFile.torrent", out TorrentInfo torrent))
     {
-        client = new TorrentClient.TorrentClient(4000, @".\Test");
-        client.DownloadSpeedLimit = 100 * 1024;
-        client.TorrentHashing += TorrentClient_TorrentHashing;
-        client.TorrentLeeching += TorrentClient_TorrentLeeching;
-        client.TorrentSeeding += TorrentClient_TorrentSeeding;
-        client.TorrentStarted += TorrentClient_TorrentStarted;
-        client.TorrentStopped += TorrentClient_TorrentStopped;
-        client.Start();
-        client.Start(torrent);
+        torrentClient = new TorrentClient(4000, @".\Test"); // listening port, base torrent data directory
+        torrentClient.DownloadSpeedLimit = 100 * 1024; // 100 KB/s
+        torrentClient.UploadSpeedLimit = 200 * 1024; // 200 KB/s
+        torrentClient.TorrentHashing += this.TorrentClient_TorrentHashing;
+        torrentClient.TorrentLeeching += this.TorrentClient_TorrentLeeching;
+        torrentClient.TorrentSeeding += this.TorrentClient_TorrentSeeding;
+        torrentClient.TorrentStarted += this.TorrentClient_TorrentStarted;
+        torrentClient.TorrentStopped += this.TorrentClient_TorrentStopped;
+        torrentClient.Start(); // start torrent client
+        torrentClient.Start(torrent); // start torrent file
     }
 }
 
@@ -53,16 +54,8 @@ private void TorrentClient_TorrentStarted(object sender, TorrentStartedEventArgs
 ```
 ## Getting execution details
 ```csharp
-TorrentProgressInfo info = client.GetProgressInfo(torrent.InfoHash);
- 
-Console.WriteLine($"duration: {info.Duration.ToString(@"hh\\:mm\\:ss", CultureInfo.InvariantCulture)}");
-Console.WriteLine($"completed: {(int)Math.Round(info.CompletedPercentage * 100)}%");
-Console.WriteLine($"download speed: {info.DownloadSpeed.ToBytes()}/s");
-Console.WriteLine($"upload speed: {info.UploadSpeed.ToBytes()}/s");
-Console.WriteLine($"downloaded: {info.Downloaded.ToBytes()}");
-Console.WriteLine($"uploaded: {info.Uploaded.ToBytes()}");
-Console.WriteLine($"seeders: {info.SeederCount})";
-Console.WriteLine($"leechers: {info.LeecherCount}");
+TorrentProgressInfo info = torrentClient.GetProgressInfo(torrent.InfoHash);
+
 Console.WriteLine($"duration: {info.Duration.ToString(@"hh\\:mm\\:ss", CultureInfo.InvariantCulture)}");
 Console.WriteLine($"completed: {(int)Math.Round(info.CompletedPercentage * 100)}%");
 Console.WriteLine($"download speed: {info.DownloadSpeed.ToBytes()}/s");
