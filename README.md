@@ -33,26 +33,32 @@ public void Run()
 
 private void TorrentClient_TorrentHashing(object sender, TorrentHashingEventArgs e)
 {
-    Console.WriteLine("hashing");
+    // occurs when a torrent's pieces are being hashed
+    Console.WriteLine($"hashing {e.TorrentInfo.InfoHash}");
 }
 
 private void TorrentClient_TorrentLeeching(object sender, TorrentLeechingEventArgs e)
 {
+    // occurs when a torrent is being leeched (pieces are being downloaded)
+    Console.WriteLine($"leeching {e.TorrentInfo.InfoHash}");
 }
 
 private void TorrentClient_TorrentSeeding(object sender, TorrentSeedingEventArgs e)
 {
-    Console.WriteLine("seeding");
+    // occurs when a torrent is being leeched (pieces are being uploaded)
+    Console.WriteLine($"seeding {e.TorrentInfo.InfoHash}");
 }
 
 private void TorrentClient_TorrentStarted(object sender, TorrentStartedEventArgs e)
 {
-    Console.WriteLine("started");
+    // occurs when a torrent is started
+    Console.WriteLine($"started {e.TorrentInfo.InfoHash}");
 }
 
  private void TorrentClient_TorrentStopped(object sender, TorrentStoppedEventArgs e)
 {
-    Console.WriteLine("stopped");
+    // occurs when a torrent is stopped
+    Console.WriteLine($"stopped {e.TorrentInfo.InfoHash}");
 }
 ```
 ## Getting execution details
