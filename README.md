@@ -1,4 +1,4 @@
-# TorrentClient for .NET Framework
+# TorrentClient for .NET Core
 
 This is an implementation of a torrent peer using the BitTorrent Protocol 1.0 written in C#.
 
@@ -45,7 +45,7 @@ private void TorrentClient_TorrentLeeching(object sender, TorrentLeechingEventAr
 
 private void TorrentClient_TorrentSeeding(object sender, TorrentSeedingEventArgs e)
 {
-    // occurs when a torrent is being leeched (pieces are being uploaded)
+    // occurs when a torrent is being seeded (pieces are being uploaded)
     Console.WriteLine($"seeding {e.TorrentInfo.InfoHash}");
 }
 
@@ -61,7 +61,9 @@ private void TorrentClient_TorrentStarted(object sender, TorrentStartedEventArgs
     Console.WriteLine($"stopped {e.TorrentInfo.InfoHash}");
 }
 ```
+
 ## Getting execution details
+
 ```csharp
 TorrentProgressInfo info = torrentClient.GetProgressInfo(torrent.InfoHash);
 
@@ -74,8 +76,11 @@ Console.WriteLine($"uploaded: {info.Uploaded.ToBytes()}");
 Console.WriteLine($"seeders: {info.SeederCount}");
 Console.WriteLine($"leechers: {info.LeecherCount}");
 ```
+
 ## Protocol execution
+
 Example of the protocol being executed:
+
 ```csharp
 creating torrent client
 listening port: 4000
@@ -531,6 +536,3 @@ torrent C4BB6FEC9FE8E0C240302785AE1A3AD2964CEEB0 leeching
 192.168.0.10:54982 -> HaveMessage: Index = 3
 ...
 ```
-
-
-

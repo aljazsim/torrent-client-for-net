@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using DefensiveProgrammingFramework;
 using TorrentClient.Extensions;
 
@@ -333,9 +334,9 @@ namespace TorrentClient.PeerWireProtocol.Messages
         /// </returns>
         public override int GetHashCode()
         {
-            return this.InfoHash.GetHashCode() ^
-                   this.PeerId.GetHashCode() ^
-                   this.ProtocolString.GetHashCode() ^
+            return this.InfoHash.GetHashCode(StringComparison.InvariantCulture) ^
+                   this.PeerId.GetHashCode(StringComparison.InvariantCulture) ^
+                   this.ProtocolString.GetHashCode(StringComparison.InvariantCulture) ^
                    this.SupportsFastPeer.GetHashCode() ^
                    this.SupportsExtendedMessaging.GetHashCode();
         }

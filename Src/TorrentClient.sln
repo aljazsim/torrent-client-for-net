@@ -1,19 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TorrentClient", "TorrentClient\TorrentClient.csproj", "{5C1F9155-4E73-4278-B64C-3DFD264800DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorrentClientTest", "..\Test\TorrentClientTest\TorrentClientTest.csproj", "{4FA63AED-BE37-45BB-8F5C-78F1B8443EEF}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5C1F9155-4E73-4278-B64C-3DFD264800DA} = {5C1F9155-4E73-4278-B64C-3DFD264800DA}
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TorrentClientApp", "TorrentClientApp\TorrentClientApp.csproj", "{C4F2E7D2-8510-49F2-9858-A1A4CD389D1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorrentClientApp", "TorrentClientApp\TorrentClientApp.csproj", "{A6F8AED5-98EA-4F77-AC56-BE37ED9A4FAE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5C1F9155-4E73-4278-B64C-3DFD264800DA} = {5C1F9155-4E73-4278-B64C-3DFD264800DA}
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TorrentClientTest", "..\Test\TorrentClientTest\TorrentClientTest.csproj", "{101D0A7B-E481-4338-86B1-056A79C5AF76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +19,14 @@ Global
 		{5C1F9155-4E73-4278-B64C-3DFD264800DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C1F9155-4E73-4278-B64C-3DFD264800DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C1F9155-4E73-4278-B64C-3DFD264800DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FA63AED-BE37-45BB-8F5C-78F1B8443EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FA63AED-BE37-45BB-8F5C-78F1B8443EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FA63AED-BE37-45BB-8F5C-78F1B8443EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FA63AED-BE37-45BB-8F5C-78F1B8443EEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6F8AED5-98EA-4F77-AC56-BE37ED9A4FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6F8AED5-98EA-4F77-AC56-BE37ED9A4FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6F8AED5-98EA-4F77-AC56-BE37ED9A4FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6F8AED5-98EA-4F77-AC56-BE37ED9A4FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F2E7D2-8510-49F2-9858-A1A4CD389D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F2E7D2-8510-49F2-9858-A1A4CD389D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F2E7D2-8510-49F2-9858-A1A4CD389D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F2E7D2-8510-49F2-9858-A1A4CD389D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{101D0A7B-E481-4338-86B1-056A79C5AF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{101D0A7B-E481-4338-86B1-056A79C5AF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{101D0A7B-E481-4338-86B1-056A79C5AF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{101D0A7B-E481-4338-86B1-056A79C5AF76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

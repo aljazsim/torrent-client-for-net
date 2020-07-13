@@ -184,7 +184,7 @@ namespace TorrentClient.Extensions
         {
             value.CannotBeNull();
 
-            return BitConverter.ToString(value).Replace("-", string.Empty);
+            return BitConverter.ToString(value).Replace("-", string.Empty, StringComparison.InvariantCulture);
         }
 
         /// <summary>

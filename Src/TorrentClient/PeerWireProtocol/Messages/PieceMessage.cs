@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using DefensiveProgrammingFramework;
 using TorrentClient.Extensions;
 
@@ -280,7 +281,7 @@ namespace TorrentClient.PeerWireProtocol.Messages
 
             hash = this.PieceIndex.GetHashCode() ^
                    this.BlockOffset.GetHashCode() ^
-                   this.Data.ToHexaDecimalString().GetHashCode();
+                   this.Data.ToHexaDecimalString().GetHashCode(StringComparison.InvariantCulture);
 
             return hash;
         }

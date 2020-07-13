@@ -1,126 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\Packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props" Condition="Exists('..\..\Packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props')" />
-  <Import Project="..\..\Packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\..\Packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props')" />
-  <Import Project="..\..\Packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\..\Packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props')" />
-  <Import Project="..\..\Packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\..\Packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props')" />
-  <Import Project="..\..\Packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\..\Packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4FA63AED-BE37-45BB-8F5C-78F1B8443EEF}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TorrentClientTest</RootNamespace>
-    <AssemblyName>TorrentClientTest</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
-    <IsCodedUITest>False</IsCodedUITest>
-    <TestProjectType>UnitTest</TestProjectType>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\..\Binaries\TorrentClientTest\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>
-    </CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\..\Binaries\TorrentClientTest\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet />
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="DefensiveProgrammingFramework, Version=1.0.2.1, Culture=neutral, PublicKeyToken=ad755474965819fa, processorArchitecture=MSIL">
-      <HintPath>..\..\Packages\DefensiveProgrammingFramework.1.0.2\lib\netstandard2.0\DefensiveProgrammingFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="PeerWireProtocol\Messages\BitFieldMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\CancelMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\ChokeMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\HandshakeMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\HaveMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\InterestedMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\KeepAliveMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\PieceMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\PortMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\RequestMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\UnchokeMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\Messages\UninterestedMessageTest.cs" />
-    <Compile Include="PeerWireProtocol\PeerTest.cs" />
-    <Compile Include="PeerWireProtocol\PieceManagerTest.cs" />
-    <Compile Include="PeerWireProtocol\PieceTest.cs" />
-    <Compile Include="PersistenceManagerTest.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TorrentInfoTest.cs" />
-    <Compile Include="TrackerProtocol\Udp\Messages\AnnounceMessageTest.cs" />
-    <Compile Include="TrackerProtocol\Udp\Messages\AnnounceResponseMessageTest.cs" />
-    <Compile Include="TrackerProtocol\Udp\Messages\ConnectMessageTest.cs" />
-    <Compile Include="TrackerProtocol\Udp\Messages\ConnectResponseMessageTest.cs" />
-    <Compile Include="TrackerProtocol\Udp\Messages\ErrorMessageTest.cs" />
-    <Compile Include="TrackerProtocol\Udp\Messages\ScrapeMessageTest.cs" />
-    <Compile Include="TrackerProtocol\Udp\Messages\ScrapeResponseMessageTest.cs" />
-    <Compile Include="TransferManagerTest.cs" />
+    <ProjectReference Include="..\..\Src\TorrentClient\TorrentClient.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Src\TorrentClient\TorrentClient.csproj">
-      <Project>{5c1f9155-4e73-4278-b64c-3dfd264800da}</Project>
-      <Name>TorrentClient</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TrackerProtocol\Http\Messages\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\Packages\Microsoft.CodeQuality.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
-    <Analyzer Include="..\..\Packages\Microsoft.CodeQuality.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
-    <Analyzer Include="..\..\Packages\Microsoft.NetCore.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
-    <Analyzer Include="..\..\Packages\Microsoft.NetCore.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
-    <Analyzer Include="..\..\Packages\Microsoft.NetFramework.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
-    <Analyzer Include="..\..\Packages\Microsoft.NetFramework.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
-    <Analyzer Include="..\..\Packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\..\Packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-    <Analyzer Include="..\..\Packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.Analyzers.dll" />
-    <Analyzer Include="..\..\Packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.CSharp.Analyzers.dll" />
-  </ItemGroup>
-  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\Packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props'))" />
-    <Error Condition="!Exists('..\..\Packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets'))" />
-    <Error Condition="!Exists('..\..\Packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props'))" />
-    <Error Condition="!Exists('..\..\Packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props'))" />
-    <Error Condition="!Exists('..\..\Packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props'))" />
-    <Error Condition="!Exists('..\..\Packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props'))" />
-  </Target>
-  <Import Project="..\..\Packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\..\Packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" />
+
 </Project>
