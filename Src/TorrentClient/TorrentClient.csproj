@@ -1,9 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 	<DebugType>full</DebugType>
-    <CodeAnalysisRuleSet>..\stylecop.ruleset</CodeAnalysisRuleSet>
     <Authors>Aljaz Simonic</Authors>
     <Company>Aljaz Simonic</Company>
     <Description>The biz torrent client implementing BitTorrent Protocol 1.0.</Description>
