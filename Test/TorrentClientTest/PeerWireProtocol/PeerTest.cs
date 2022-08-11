@@ -47,16 +47,10 @@ namespace TorrentClient.Test.PeerWireProtocol
             bitField = new PieceStatus[torrent.PiecesCount];
 
             pm = new PieceManager(torrent.InfoHash, torrent.Length, torrent.PieceHashes, torrent.PieceLength, torrent.BlockLength, bitField);
-            pm.PieceCompleted += (sender, e) =>
-                {
-                    Assert.AreEqual(torrent.PieceHashes.ElementAt(e.PieceIndex), e.PieceData.CalculateSha1Hash().ToHexaDecimalString());
-                };
+            pm.PieceCompleted += (sender, e) => Assert.AreEqual(torrent.PieceHashes.ElementAt(e.PieceIndex), e.PieceData.CalculateSha1Hash().ToHexaDecimalString());
 
             peer = new Peer(new PeerCommunicator(tm, tcp), pm, "-UT3530-B9731F4C29D30E7DEA1F9FA7");
-            peer.CommunicationErrorOccurred += (sender, e) =>
-                {
-                    Assert.Fail();
-                };
+            peer.CommunicationErrorOccurred += (sender, e) => Assert.Fail();
 
             Thread.Sleep(1000000);
         }

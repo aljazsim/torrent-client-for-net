@@ -85,67 +85,27 @@ namespace TorrentClient.Extensions
             {
                 if (hashSize == 128)
                 {
-                    using (HashAlgorithm sha = new SHA1CryptoServiceProvider())
-                    {
-                        hashRaw = CalculateHash(data, offset, length, sha);
-                    }
+                    using HashAlgorithm sha = SHA1.Create();
+
+                    hashRaw = CalculateHash(data, offset, length, sha);
                 }
                 else if (hashSize == 256)
                 {
-                    try
-                    {
-                        using (HashAlgorithm sha = new SHA256CryptoServiceProvider())
-                        {
-                            hashRaw = CalculateHash(data, offset, length, sha);
-                        }
-                    }
-                    catch (PlatformNotSupportedException)
-                    {
-                        // Fall back to the managed version if the CSP
-                        // is not supported on this platform.
-                        using (HashAlgorithm sha = new SHA256Managed())
-                        {
-                            hashRaw = CalculateHash(data, offset, length, sha);
-                        }
-                    }
+                    using HashAlgorithm sha = SHA256.Create();
+
+                    hashRaw = CalculateHash(data, offset, length, sha);
                 }
                 else if (hashSize == 384)
                 {
-                    try
-                    {
-                        using (HashAlgorithm sha = new SHA384CryptoServiceProvider())
-                        {
-                            hashRaw = CalculateHash(data, offset, length, sha);
-                        }
-                    }
-                    catch (PlatformNotSupportedException)
-                    {
-                        // Fall back to the managed version if the CSP
-                        // is not supported on this platform.
-                        using (HashAlgorithm sha = new SHA384Managed())
-                        {
-                            hashRaw = CalculateHash(data, offset, length, sha);
-                        }
-                    }
+                    using HashAlgorithm sha = SHA384.Create();
+
+                    hashRaw = CalculateHash(data, offset, length, sha);
                 }
                 else if (hashSize == 512)
                 {
-                    try
-                    {
-                        using (HashAlgorithm sha = new SHA512CryptoServiceProvider())
-                        {
-                            hashRaw = CalculateHash(data, offset, length, sha);
-                        }
-                    }
-                    catch (PlatformNotSupportedException)
-                    {
-                        // Fall back to the managed version if the CSP
-                        // is not supported on this platform.
-                        using (HashAlgorithm sha = new SHA512Managed())
-                        {
-                            hashRaw = CalculateHash(data, offset, length, sha);
-                        }
-                    }
+                    using HashAlgorithm sha = SHA512.Create();
+
+                    hashRaw = CalculateHash(data, offset, length, sha);
                 }
             }
 
