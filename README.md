@@ -1,4 +1,4 @@
-# TorrentClient for .NET Core
+# TorrentClient for .NET
 
 This is an implementation of a torrent peer using the BitTorrent Protocol 1.0 written in C#.
 
